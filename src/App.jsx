@@ -3,6 +3,7 @@ import Login from './Login';
 import Asistencia from './Asistencia';
 import LoginGerente from './LoginGerente';
 import PanelGerente from './PanelGerente';
+import RegistroGerente from './RegistroGerente';
 
 function Home() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/asistencia" element={<Asistencia />} />
         <Route path="/gerente" element={<PanelGerente />} />
         <Route path="/gerente-login" element={<LoginGerente />} />
+        <Route path="/registro-gerente" element={<RegistroGerente />} /> {/* Añade esta ruta */}
       </Routes>
     </Router>
   );
