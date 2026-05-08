@@ -109,6 +109,11 @@ export default function LoginGerente() {
         </form>
 
         <div style={{ marginTop: '30px', textAlign: 'center' }}>
+          <div style={{ marginBottom: '16px' }}>
+            <Link to="/registro-gerente" style={{ color: '#3b82f6', fontSize: '0.95rem', fontWeight: '600', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#60a5fa'} onMouseOut={e => e.target.style.color = '#3b82f6'}>
+              ¿No tienes cuenta? Regístrate aquí
+            </Link>
+          </div>
           <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '0.95rem', fontWeight: '500', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#ffffff'} onMouseOut={e => e.target.style.color = '#94a3b8'}>
             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             Volver al inicio
