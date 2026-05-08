@@ -37,63 +37,93 @@ export default function LoginGerente() {
   };
 
   return (
-    <div className="page-container" style={{ background: 'radial-gradient(circle at top right, #312e81, #1e1b4b, #000000)' }}>
-      <div className="modern-card" style={{ maxWidth: '440px', padding: '50px 40px', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)', border: 'none', borderTop: '6px solid #6366f1', background: 'rgba(255, 255, 255, 0.98)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', position: 'relative', overflow: 'hidden', fontFamily: "'Inter', system-ui, sans-serif" }}>
+      
+      {/* Background Animated/Floating Orbs */}
+      <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(59,130,246,0) 70%)', borderRadius: '50%', filter: 'blur(60px)', animation: 'float 10s infinite ease-in-out alternate' }}></div>
+      <div style={{ position: 'absolute', bottom: '-15%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(236,72,153,0.25) 0%, rgba(236,72,153,0) 70%)', borderRadius: '50%', filter: 'blur(80px)', animation: 'float 12s infinite ease-in-out alternate-reverse' }}></div>
+      <div style={{ position: 'absolute', top: '20%', right: '15%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(139,92,246,0.25) 0%, rgba(139,92,246,0) 70%)', borderRadius: '50%', filter: 'blur(50px)', animation: 'float 8s infinite ease-in-out' }}></div>
+
+      <div style={{ maxWidth: '440px', width: '90%', padding: '48px', borderRadius: '28px', background: 'rgba(255, 255, 255, 0.03)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255, 255, 255, 0.1)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)', position: 'relative', zIndex: 10 }}>
         
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-          <div style={{ width: '80px', height: '80px', background: 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', boxShadow: '0 10px 15px -3px rgba(79, 70, 229, 0.2)' }}>
-            💼
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+          <div style={{ width: '80px', height: '80px', background: 'linear-gradient(135deg, #3b82f6, #ec4899)', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', transform: 'rotate(-5deg)', boxShadow: '0 15px 25px -5px rgba(236, 72, 153, 0.4)' }}>
+            <svg width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
         </div>
 
-        <h1 className="title" style={{ fontSize: '2.2rem', color: '#1e1b4b', fontWeight: '800', letterSpacing: '-0.5px' }}>Portal Ejecutivo</h1>
-        <p className="subtitle" style={{ marginBottom: '35px', color: '#64748b', fontSize: '0.95rem' }}>Ingresa tus credenciales para continuar</p>
+        <h1 style={{ fontSize: '2rem', color: '#ffffff', fontWeight: '800', textAlign: 'center', margin: '0 0 8px 0', letterSpacing: '-0.5px' }}>Portal Gerencial</h1>
+        <p style={{ marginBottom: '40px', color: '#94a3b8', fontSize: '1rem', textAlign: 'center' }}>Inicia sesión para continuar</p>
 
-        <form onSubmit={handleLogin}>
-          <div className="input-group">
-            <label className="input-label" style={{ color: '#475569', fontSize: '0.8rem', fontWeight: '700' }}>NOMBRE DE USUARIO</label>
-            <input 
-              type="text" 
-              className="modern-input" 
-              required 
-              value={username} 
-              onChange={e => setUsername(e.target.value)} 
-              placeholder="Ej: admin" 
-              style={{ padding: '16px', fontSize: '1.05rem', background: '#f8fafc', border: '2px solid #e2e8f0', borderRadius: '12px' }}
-            />
-          </div>
-          <div className="input-group" style={{ marginBottom: '10px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <label className="input-label" style={{ color: '#475569', fontSize: '0.8rem', fontWeight: '700' }}>CONTRASEÑA</label>
+        <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div>
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#64748b', display: 'flex' }}>
+                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              </div>
+              <input 
+                type="text" 
+                required 
+                value={username} 
+                onChange={e => setUsername(e.target.value)} 
+                placeholder="Usuario" 
+                style={{ width: '100%', padding: '16px 16px 16px 48px', fontSize: '1.05rem', background: 'rgba(255, 255, 255, 0.05)', color: '#ffffff', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '16px', outline: 'none', transition: 'all 0.3s ease', boxSizing: 'border-box' }}
+                onFocus={e => { e.target.style.borderColor = '#3b82f6'; e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.boxShadow = '0 0 0 4px rgba(59,130,246,0.1)'; }}
+                onBlur={e => { e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'; e.target.style.background = 'rgba(255, 255, 255, 0.05)'; e.target.style.boxShadow = 'none'; }}
+              />
             </div>
-            <input 
-              type="password" 
-              className="modern-input" 
-              required 
-              value={password} 
-              onChange={e => setPassword(e.target.value)} 
-              placeholder="••••••••" 
-              style={{ padding: '16px', fontSize: '1.05rem', background: '#f8fafc', border: '2px solid #e2e8f0', borderRadius: '12px' }}
-            />
+          </div>
+
+          <div>
+             <div style={{ position: 'relative' }}>
+               <div style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#64748b', display: 'flex' }}>
+                  <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+               </div>
+               <input 
+                  type="password" 
+                  required 
+                  value={password} 
+                  onChange={e => setPassword(e.target.value)} 
+                  placeholder="Contraseña" 
+                  style={{ width: '100%', padding: '16px 16px 16px 48px', fontSize: '1.05rem', background: 'rgba(255, 255, 255, 0.05)', color: '#ffffff', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '16px', outline: 'none', transition: 'all 0.3s ease', boxSizing: 'border-box' }}
+                  onFocus={e => { e.target.style.borderColor = '#ec4899'; e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.boxShadow = '0 0 0 4px rgba(236,72,153,0.1)'; }}
+                  onBlur={e => { e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'; e.target.style.background = 'rgba(255, 255, 255, 0.05)'; e.target.style.boxShadow = 'none'; }}
+               />
+             </div>
           </div>
           
           {mensaje.texto && (
-            <div style={{ padding: '14px', marginTop: '20px', marginBottom: '10px', borderRadius: '12px', fontWeight: '600', fontSize: '0.95rem', background: mensaje.tipo === 'error' ? '#fef2f2' : '#ecfdf5', color: mensaje.tipo === 'error' ? '#991b1b' : '#065f46', border: `1px solid ${mensaje.tipo === 'error' ? '#fca5a5' : '#6ee7b7'}` }}>
-                {mensaje.texto}
+            <div style={{ padding: '14px 16px', borderRadius: '12px', fontWeight: '500', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '8px', background: mensaje.tipo === 'error' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)', color: mensaje.tipo === 'error' ? '#fca5a5' : '#6ee7b7', border: `1px solid ${mensaje.tipo === 'error' ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}` }}>
+                {mensaje.tipo === 'error' ? '✖' : '✔'} {mensaje.texto}
             </div>
           )}
 
-          <button type="submit" className="btn" style={{ marginTop: '25px', padding: '16px', fontSize: '1.1rem', borderRadius: '12px', background: 'linear-gradient(135deg, #4f46e5 0%, #3730a3 100%)', color: 'white', border: 'none', boxShadow: '0 10px 20px -5px rgba(79, 70, 229, 0.4)', fontWeight: 'bold' }}>
-            Acceder al Sistema
+          <button type="submit" style={{width: '100%', padding: '16px', fontSize: '1.1rem', borderRadius: '16px', background: 'linear-gradient(90deg, #3b82f6, #ec4899)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: '700', transition: 'transform 0.1s, filter 0.2s', outline: 'none', marginTop: '8px', boxShadow: '0 10px 20px -5px rgba(0,0,0,0.3)' }}
+               onMouseOver={e => e.target.style.filter = 'brightness(1.1)' }
+               onMouseOut={e => e.target.style.filter = 'brightness(1)' }
+               onMouseDown={e => e.target.style.transform = 'scale(0.98)'}
+               onMouseUp={e => e.target.style.transform = 'scale(1)'}
+          >
+            Entrar al Sistema
           </button>
         </form>
 
-        <div style={{ marginTop: '30px', paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
-          <Link to="/" className="btn btn-outline" style={{ padding: '14px', borderRadius: '12px', border: 'none', background: 'transparent', color: '#94a3b8', fontWeight: '600', transition: 'all 0.2s' }} onMouseOver={e => e.target.style.color = '#4f46e5'} onMouseOut={e => e.target.style.color = '#94a3b8'}>
-            ← Volver a la página principal
+        <div style={{ marginTop: '30px', textAlign: 'center' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '0.95rem', fontWeight: '500', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#ffffff'} onMouseOut={e => e.target.style.color = '#94a3b8'}>
+            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            Volver al inicio
           </Link>
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+      `}</style>
     </div>
   );
 }
