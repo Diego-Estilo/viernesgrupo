@@ -7,7 +7,7 @@ import RegistrosAsistencia from './components/RegistrosAsistencia';
 import GestionAreas from './components/GestionAreas';
 import ModalConfirmacion from './components/ModalConfirmacion';
 
-export default function PanelGerente() {
+export default function PanelGerente({ modoOscuro, setModoOscuro }) {
   const navigate = useNavigate();
   const [tabActiva, setTabActiva] = useState('registros'); // 'registros' | 'areas'
   const [asistencias, setAsistencias] = useState([]);
@@ -15,7 +15,6 @@ export default function PanelGerente() {
   const [cargando, setCargando] = useState(true);
   const [filtroTipo, setFiltroTipo] = useState('todos');
   const [busqueda, setBusqueda] = useState('');
-  const [modoOscuro, setModoOscuro] = useState(() => localStorage.getItem('theme_oscuro') === 'true');
 
   // Estados para CRUD de áreas
   const [nuevaArea, setNuevaArea] = useState('');
@@ -30,10 +29,6 @@ export default function PanelGerente() {
     }
     cargarDatos();
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('theme_oscuro', modoOscuro);
-  }, [modoOscuro]);
 
   const cargarDatos = async () => {
     setCargando(true);
