@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { supabase } from './supabase';
 import { useNavigate, Link } from 'react-router-dom';
 
-export default function RegistroGerente() {
+export default function RegistroGerente({ modoOscuro }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState({ texto: '', tipo: '' });
@@ -31,13 +31,13 @@ export default function RegistroGerente() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', position: 'relative', overflow: 'hidden', fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: modoOscuro ? '#0f172a' : '#f1f5f9', position: 'relative', overflow: 'hidden', fontFamily: "'Inter', system-ui, sans-serif", transition: 'background 0.3s ease' }}>
       
       {/* Background Animated Orbs */}
-      <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(16,185,129,0.3) 0%, rgba(16,185,129,0) 70%)', borderRadius: '50%', filter: 'blur(60px)', animation: 'float 10s infinite ease-in-out alternate' }}></div>
-      <div style={{ position: 'absolute', bottom: '-15%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0) 70%)', borderRadius: '50%', filter: 'blur(80px)', animation: 'float 12s infinite ease-in-out alternate-reverse' }}></div>
+      <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '500px', height: '500px', background: modoOscuro ? 'radial-gradient(circle, rgba(16,185,129,0.3) 0%, rgba(16,185,129,0) 70%)' : 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0) 70%)', borderRadius: '50%', filter: 'blur(60px)', animation: 'float 10s infinite ease-in-out alternate' }}></div>
+      <div style={{ position: 'absolute', bottom: '-15%', right: '-5%', width: '600px', height: '600px', background: modoOscuro ? 'radial-gradient(circle, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0) 70%)' : 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, rgba(59,130,246,0) 70%)', borderRadius: '50%', filter: 'blur(80px)', animation: 'float 12s infinite ease-in-out alternate-reverse' }}></div>
 
-      <div style={{ maxWidth: '440px', width: '90%', padding: '48px', borderRadius: '28px', background: 'rgba(255, 255, 255, 0.03)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255, 255, 255, 0.1)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)', position: 'relative', zIndex: 10 }}>
+      <div style={{ maxWidth: '440px', width: '90%', padding: '48px', borderRadius: '28px', background: modoOscuro ? 'rgba(255, 255, 255, 0.03)' : 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: modoOscuro ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.2)', position: 'relative', zIndex: 10 }}>
         
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
           <div style={{ width: '80px', height: '80px', background: 'linear-gradient(135deg, #10b981, #3b82f6)', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', transform: 'rotate(-5deg)', boxShadow: '0 15px 25px -5px rgba(16, 185, 129, 0.4)' }}>
@@ -45,8 +45,8 @@ export default function RegistroGerente() {
           </div>
         </div>
 
-        <h1 style={{ fontSize: '2rem', color: '#ffffff', fontWeight: '800', textAlign: 'center', margin: '0 0 8px 0', letterSpacing: '-0.5px' }}>Nueva Cuenta</h1>
-        <p style={{ marginBottom: '40px', color: '#94a3b8', fontSize: '1rem', textAlign: 'center' }}>Crea tu acceso de administrador</p>
+        <h1 style={{ fontSize: '2rem', color: modoOscuro ? '#ffffff' : '#0f172a', fontWeight: '800', textAlign: 'center', margin: '0 0 8px 0', letterSpacing: '-0.5px' }}>Nueva Cuenta</h1>
+        <p style={{ marginBottom: '40px', color: modoOscuro ? '#94a3b8' : '#64748b', fontSize: '1rem', textAlign: 'center' }}>Crea tu acceso de administrador</p>
         
         <form onSubmit={handleRegistro} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div>
@@ -60,9 +60,9 @@ export default function RegistroGerente() {
                 placeholder="Nombre de Usuario"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                style={{ width: '100%', padding: '16px 16px 16px 48px', fontSize: '1.05rem', background: 'rgba(255, 255, 255, 0.05)', color: '#ffffff', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '16px', outline: 'none', transition: 'all 0.3s ease', boxSizing: 'border-box' }}
+                style={{ width: '100%', padding: '16px 16px 16px 48px', fontSize: '1.05rem', background: modoOscuro ? 'rgba(255, 255, 255, 0.05)' : '#ffffff', color: modoOscuro ? '#ffffff' : '#0f172a', border: modoOscuro ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #e2e8f0', borderRadius: '16px', outline: 'none', transition: 'all 0.3s ease', boxSizing: 'border-box' }}
                 onFocus={e => { e.target.style.borderColor = '#10b981'; e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.boxShadow = '0 0 0 4px rgba(16,185,129,0.1)'; }}
-                onBlur={e => { e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'; e.target.style.background = 'rgba(255, 255, 255, 0.05)'; e.target.style.boxShadow = 'none'; }}
+                onBlur={e => { e.target.style.borderColor = modoOscuro ? 'rgba(255, 255, 255, 0.1)' : '#e2e8f0'; e.target.style.background = modoOscuro ? 'rgba(255, 255, 255, 0.05)' : '#ffffff'; e.target.style.boxShadow = 'none'; }}
               />
             </div>
           </div>
@@ -78,9 +78,9 @@ export default function RegistroGerente() {
                 placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ width: '100%', padding: '16px 16px 16px 48px', fontSize: '1.05rem', background: 'rgba(255, 255, 255, 0.05)', color: '#ffffff', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '16px', outline: 'none', transition: 'all 0.3s ease', boxSizing: 'border-box' }}
+                style={{ width: '100%', padding: '16px 16px 16px 48px', fontSize: '1.05rem', background: modoOscuro ? 'rgba(255, 255, 255, 0.05)' : '#ffffff', color: modoOscuro ? '#ffffff' : '#0f172a', border: modoOscuro ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #e2e8f0', borderRadius: '16px', outline: 'none', transition: 'all 0.3s ease', boxSizing: 'border-box' }}
                 onFocus={e => { e.target.style.borderColor = '#3b82f6'; e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.boxShadow = '0 0 0 4px rgba(59,130,246,0.1)'; }}
-                onBlur={e => { e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'; e.target.style.background = 'rgba(255, 255, 255, 0.05)'; e.target.style.boxShadow = 'none'; }}
+                onBlur={e => { e.target.style.borderColor = modoOscuro ? 'rgba(255, 255, 255, 0.1)' : '#e2e8f0'; e.target.style.background = modoOscuro ? 'rgba(255, 255, 255, 0.05)' : '#ffffff'; e.target.style.boxShadow = 'none'; }}
               />
             </div>
           </div>
